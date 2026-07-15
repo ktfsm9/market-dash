@@ -268,7 +268,7 @@ Chart.defaults.borderColor = '#262a33';
 Chart.defaults.font.size = 10;
 
 // ---------- 시장 시세 ----------
-const MARKET_ORDER = ['sp500','sp500f','nasdaq','sox','vix','us10y','gold','dxy','usdkrw','btc','kospi','kosdaq','kosdaq150'];
+const MARKET_ORDER = ['sp500','sp500f','nasdaq','sox','vix','us10y','gold','dxy','usdkrw','btc','kospi','kosdaq'];
 function cutoff(days) {
   const d = new Date(); d.setDate(d.getDate() - days);
   return d.toISOString().slice(0, 10);
