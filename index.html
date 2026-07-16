@@ -44,9 +44,11 @@
   table.ai th, table.ai td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
   table.ai th { color: var(--muted); font-weight: normal; font-size: 11px; }
   .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; }
+  .badge.vpos { background: #16a34a; color: #ffffff; font-weight: 700; }
   .badge.pos { background: #14532d; color: #86efac; }
   .badge.neu { background: #374151; color: #d1d5db; }
   .badge.neg { background: #7f1d1d; color: #fca5a5; }
+  .badge.vneg { background: #dc2626; color: #ffffff; font-weight: 700; }
   .pick { border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 12px; }
   .pick .rsk { color: #f59e0b; font-size: 12px; }
   .muted { color: var(--muted); }
@@ -243,7 +245,7 @@ const nl = document.getElementById('newsList');
 
   const pk = document.getElementById('aiPicks');
   (ai.stock_ideas || []).forEach(s => {
-    const cls = s.stance === '긍정적' ? 'pos' : (s.stance === '부정적' ? 'neg' : 'neu');
+    const cls = ({'매우 긍정적':'vpos','긍정적':'pos','중립':'neu','부정적':'neg','매우 부정적':'vneg'})[s.stance] || 'neu';
     const div = document.createElement('div');
     div.className = 'pick';
     div.innerHTML = `<b>$${s.ticker}</b> ${s.name || ''} <span class="badge ${cls}">${s.stance || ''}</span>
